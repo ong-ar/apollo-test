@@ -1,13 +1,13 @@
 import * as React from "react";
 import AppPresenter from "./AppPresenter";
-import { ApolloProvider } from "react-apollo";
+import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";
 import client from "../../apollo";
 
 const AppContainer = () => (
   <React.Fragment>
-    <ApolloProvider client={client}>
+    <ApolloHooksProvider client={client}>
       <AppPresenter />
-    </ApolloProvider>
+    </ApolloHooksProvider>
   </React.Fragment>
 );
 
