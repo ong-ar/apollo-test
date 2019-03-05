@@ -1,0 +1,22 @@
+{
+  "name": "apollo-test",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "repository": "https://github.com/ong-ar/apollo-test.git",
+  "author": "ong-ar",
+  "license": "MIT",
+  "dependencies": {
+    "parcel-bundler": "^1.11.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-router-dom": "^4.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.6",
+    "@types/react-dom": "^16.8.2",
+    "@types/react-router-dom": "^4.3.1",
+    "@types/styled-components": "^4.1.11",
+    "styled-components": "^4.1.3",
+    "typescript": "^3.3.3333"
+  }
+}
