@@ -7,7 +7,8 @@ const HomeContainer = () => {
   const [name, setName] = React.useState("");
   const { data, error, loading } = useQuery(USERS);
   const createUser = useMutation(CREATE_USER, {
-    variables: { name }
+    variables: { name },
+    refetchQueries: [{ query: USERS }]
   });
   return (
     <React.Fragment>
