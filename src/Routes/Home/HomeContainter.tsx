@@ -2,12 +2,17 @@ import * as React from "react";
 import HomePresenter from "./HomePresenter";
 import { useQuery, useMutation } from "react-apollo-hooks";
 import { USERS, CREATE_USER } from "./HomeQueries";
+import console = require("console");
 
 const HomeContainer = () => {
   const [name, setName] = React.useState("");
   const { data, error, loading } = useQuery(USERS);
   const createUser = useMutation(CREATE_USER, {
     variables: { name },
+    update: (proxy, mutationResult) => {
+      console.log(proxy);
+      console.log(mutationResult);
+    },
     refetchQueries: [{ query: USERS }]
   });
   return (
