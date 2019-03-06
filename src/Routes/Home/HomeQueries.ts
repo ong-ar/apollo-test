@@ -17,3 +17,16 @@ export const CREATE_USER = gql`
     }
   }
 `;
+
+export const SUBSCRIPTION_USER = gql`
+  subscription {
+    user {
+      mutation
+      node {
+        id
+        email
+        name
+      }
+    }
+  }
+`;

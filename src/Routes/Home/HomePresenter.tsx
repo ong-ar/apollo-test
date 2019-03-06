@@ -1,5 +1,6 @@
 import * as React from "react";
 import { ApolloError } from "apollo-client";
+import console = require("console");
 
 interface IProps {
   data: any;
@@ -8,6 +9,7 @@ interface IProps {
   onclick: any;
   onChangeName: any;
   name: string;
+  sub: any;
 }
 
 const HomePresenter: React.SFC<IProps> = ({
@@ -16,29 +18,32 @@ const HomePresenter: React.SFC<IProps> = ({
   loading,
   onclick,
   onChangeName,
-  name
+  name,
+  sub
 }) => {
   if (loading) {
     return <div>loading</div>;
-  }
-  if (error) {
+  } else if (error) {
     return <div>Error! {error.message}</div>;
+  } else {
+    return (
+      <div>
+        <ul>
+          {data.users.map(user => (
+            <li key={user.id}>{user.name}</li>
+          ))}
+          <input
+            type="text"
+            onChange={e => onChangeName(e.target.value)}
+            value={name}
+          />
+          <button type="button" onClick={onclick}>
+            click
+          </button>
+        </ul>
+      </div>
+    );
   }
-  return (
-    <ul>
-      {data.users.map(user => (
-        <li key={user.id}>{user.name}</li>
-      ))}
-      <input
-        type="text"
-        onChange={e => onChangeName(e.target.value)}
-        value={name}
-      />
-      <button type="button" onClick={onclick}>
-        click
-      </button>
-    </ul>
-  );
 };
 
 export default HomePresenter;
