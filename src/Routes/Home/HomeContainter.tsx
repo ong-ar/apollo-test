@@ -1,14 +1,24 @@
 import * as React from "react";
 import HomePresenter from "./HomePresenter";
-import { useQuery } from "react-apollo-hooks";
-
-import { USERS } from "./HomeQueries";
+import { useQuery, useMutation } from "react-apollo-hooks";
+import { USERS, CREATE_USER } from "./HomeQueries";
 
 const HomeContainer = () => {
+  const [name, setName] = React.useState("");
   const { data, error, loading } = useQuery(USERS);
+  const createUser = useMutation(CREATE_USER, {
+    variables: { name }
+  });
   return (
     <React.Fragment>
-      <HomePresenter data={data} error={error} loading={loading} />
+      <HomePresenter
+        data={data}
+        error={error}
+        loading={loading}
+        onclick={createUser}
+        name={name}
+        onChangeName={setName}
+      />
     </React.Fragment>
   );
 };
